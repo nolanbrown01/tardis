@@ -362,7 +362,10 @@ logger = logging.getLogger(__name__)
 
     if not model.raw_isotope_abundance.empty:
         plasma_modules += isotope_properties
-        kwargs.update(isotope_abundance=model.raw_isotope_abundance)
+        isotope_abundance = model.raw_isotope_abundance.loc[
+            :, model.v_boundary_inner_index : model.v_boundary_outer_index - 1
+        ]
+        kwargs.update(isotope_abundance=isotope_abundance)
 
     kwargs[&quot;helium_treatment&quot;] = config.plasma.helium_treatment
 
@@ -383,7 +386,7 @@ logger = logging.getLogger(__name__)
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 03 May 2022.
+      <span class="lastupdated">Last updated on 04 May 2022.
       </span></p>
   </div>
 

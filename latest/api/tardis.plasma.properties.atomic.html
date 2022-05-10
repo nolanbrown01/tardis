@@ -564,7 +564,7 @@ level_number_upper.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tardis.plasma.properties.atomic.YgData.calculate_yg_van_regemorter">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_yg_van_regemorter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atomic_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_electrons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum_interaction_species</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tardis/plasma/properties/atomic.html#YgData.calculate_yg_van_regemorter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tardis.plasma.properties.atomic.YgData.calculate_yg_van_regemorter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_yg_van_regemorter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atomic_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_electrons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum_interaction_species</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tardis/plasma/properties/atomic.html#YgData.calculate_yg_van_regemorter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tardis.plasma.properties.atomic.YgData.calculate_yg_van_regemorter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate collision strengths in the van Regemorter approximation.</p>
 <p>This function calculates thermally averaged effective collision
 strengths (divided by the statistical weight of the lower level)
@@ -596,6 +596,28 @@ doi:10.1086/147445.</p>
 </dd>
 <dt class="label" id="r89ee6ebc53a5-2"><span class="brackets">2</span></dt>
 <dd><p>Hubeny, I. and Mihalas, D., “Theory of Stellar Atmospheres”. 2014.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tardis.plasma.properties.atomic.YgData.exp1_times_exp">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exp1_times_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tardis/plasma/properties/atomic.html#YgData.exp1_times_exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tardis.plasma.properties.atomic.YgData.exp1_times_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Product of the Exponential integral E1 and an exponential.</p>
+<p>This function calculates the product of the Exponential integral E1
+and an exponential in a way that also works for large values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>Input values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array_like</dt><dd><p>Output array.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -679,7 +701,7 @@ from the ionized state that go directly to the ground state.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 08 May 2022.
+      <span class="lastupdated">Last updated on 10 May 2022.
       </span></p>
   </div>
 

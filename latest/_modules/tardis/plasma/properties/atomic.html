@@ -114,7 +114,7 @@
 import numpy as np
 import pandas as pd
 from numba import njit
-from scipy.special import expn
+from scipy.special import exp1
 from scipy.interpolate import PchipInterpolator
 from collections import Counter as counter
 import radioactivedecay as rd
@@ -869,9 +869,9 @@ __all__ = [
         )
         return yg_data, t_yg, index, delta_E, yg_idx</div>
 
-<div class="viewcode-block" id="YgData.calculate_yg_van_regemorter"><a class="viewcode-back" href="../../../../api/tardis.plasma.properties.atomic.html#tardis.plasma.properties.atomic.YgData.calculate_yg_van_regemorter">[docs]</a>    @staticmethod
+<div class="viewcode-block" id="YgData.calculate_yg_van_regemorter"><a class="viewcode-back" href="../../../../api/tardis.plasma.properties.atomic.html#tardis.plasma.properties.atomic.YgData.calculate_yg_van_regemorter">[docs]</a>    @classmethod
     def calculate_yg_van_regemorter(
-        atomic_data, t_electrons, continuum_interaction_species
+        cls, atomic_data, t_electrons, continuum_interaction_species
     ):
         &quot;&quot;&quot;
         Calculate collision strengths in the van Regemorter approximation.
@@ -917,12 +917,36 @@ __all__ = [
         yg = 14.5 * coll_const * t_electrons * yg[:, np.newaxis]
 
         u0 = nu_lines[np.newaxis].T / t_electrons * (H / K_B)
-        gamma = 0.276 * np.exp(u0) * expn(1, u0)
+        gamma = 0.276 * cls.exp1_times_exp(u0)
         gamma[gamma &lt; 0.2] = 0.2
         yg *= u0 * gamma / BETA_COLL
         yg = pd.DataFrame(yg, index=lines_filtered.index, columns=t_electrons)
 
-        return yg</div></div>
+        return yg</div>
+
+<div class="viewcode-block" id="YgData.exp1_times_exp"><a class="viewcode-back" href="../../../../api/tardis.plasma.properties.atomic.html#tardis.plasma.properties.atomic.YgData.exp1_times_exp">[docs]</a>    @staticmethod
+    def exp1_times_exp(x):
+        &quot;&quot;&quot;
+        Product of the Exponential integral E1 and an exponential.
+
+        This function calculates the product of the Exponential integral E1
+        and an exponential in a way that also works for large values.
+
+        Parameters
+        ----------
+        x : array_like
+            Input values.
+
+        Returns
+        -------
+        array_like
+            Output array.
+        &quot;&quot;&quot;
+        f = exp1(x) * np.exp(x)
+        # Use Laurent series for large values to avoid infinite exponential
+        mask = x &gt; 500
+        f[mask] = (x**-1 - x**-2 + 2 * x**-3 - 6 * x**-4)[mask]
+        return f</div></div>
 
 
 <div class="viewcode-block" id="YgInterpolator"><a class="viewcode-back" href="../../../../api/tardis.plasma.properties.atomic.html#tardis.plasma.properties.atomic.YgInterpolator">[docs]</a>class YgInterpolator(ProcessingPlasmaProperty):
@@ -951,7 +975,7 @@ __all__ = [
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 08 May 2022.
+      <span class="lastupdated">Last updated on 10 May 2022.
       </span></p>
   </div>
 

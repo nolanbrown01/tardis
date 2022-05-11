@@ -152,10 +152,13 @@ logger = logging.getLogger(__name__)
 
     if atomic_data_name not in atomic_repo:
         raise ValueError(f&quot;Atomic Data name {atomic_data_name} not known&quot;)
+
     dst_dir = os.path.join(get_data_dir(), f&quot;{atomic_data_name}.h5&quot;)
     src_url = atomic_repo[atomic_data_name][&quot;url&quot;]
+    mirrors = atomic_repo[atomic_data_name][&quot;mirrors&quot;]
+
     logger.info(f&quot;Downloading atomic data from {src_url} to {dst_dir}&quot;)
-    download_from_url(src_url, dst_dir)</div>
+    download_from_url(src_url, dst_dir, mirrors)</div>
 </pre></div>
 
            </div>
@@ -166,7 +169,7 @@ logger = logging.getLogger(__name__)
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 10 May 2022.
+      <span class="lastupdated">Last updated on 11 May 2022.
       </span></p>
   </div>
 

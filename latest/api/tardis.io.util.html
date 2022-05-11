@@ -341,10 +341,20 @@ to properly parse the tardis configuration.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="tardis.io.util.download_from_url">
-<span class="sig-prename descclassname"><span class="pre">tardis.io.util.</span></span><span class="sig-name descname"><span class="pre">download_from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tardis/io/util.html#download_from_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tardis.io.util.download_from_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>kindly used from <a class="reference external" href="https://gist.github.com/wy193777/0e2a4932e81afc6aa4c8f7a2984f34e2">https://gist.github.com/wy193777/0e2a4932e81afc6aa4c8f7a2984f34e2</a>
-&#64;param: url to download file
-&#64;param: dst place to put the file</p>
+<span class="sig-prename descclassname"><span class="pre">tardis.io.util.</span></span><span class="sig-name descname"><span class="pre">download_from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tardis/io/util.html#download_from_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tardis.io.util.download_from_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download files from a given URL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>url</strong><span class="classifier">str</span></dt><dd><p>URL to download from</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">str</span></dt><dd><p>Destination folder for the downloaded file</p>
+</dd>
+<dt><strong>src</strong><span class="classifier">list</span></dt><dd><p>List of URLs to use as mirrors</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -426,7 +436,7 @@ Signature: <code class="xref py py-obj docutils literal notranslate"><span class
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 10 May 2022.
+      <span class="lastupdated">Last updated on 11 May 2022.
       </span></p>
   </div>
 

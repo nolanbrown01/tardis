@@ -113,6 +113,7 @@
 
 import os
 import re
+import shutil
 import logging
 
 import pandas as pd
@@ -120,12 +121,11 @@ import numpy as np
 import collections
 from collections import OrderedDict
 
-import requests
 import yaml
-from tqdm.auto import tqdm
 
 from tardis import constants as const
 from astropy import units as u
+from astropy.utils.data import download_file
 
 from tardis import __path__ as TARDIS_PATH
 
@@ -502,36 +502,21 @@ YAMLLoader.add_constructor(
         )</div></div>
 
 
-<div class="viewcode-block" id="download_from_url"><a class="viewcode-back" href="../../../api/tardis.io.util.html#tardis.io.util.download_from_url">[docs]</a>def download_from_url(url, dst):
-    &quot;&quot;&quot;
-    kindly used from https://gist.github.com/wy193777/0e2a4932e81afc6aa4c8f7a2984f34e2
-    @param: url to download file
-    @param: dst place to put the file
+<div class="viewcode-block" id="download_from_url"><a class="viewcode-back" href="../../../api/tardis.io.util.html#tardis.io.util.download_from_url">[docs]</a>def download_from_url(url, dst, src=None):
+    &quot;&quot;&quot;Download files from a given URL
+
+    Parameters
+    ----------
+    url : str
+        URL to download from
+    dst : str
+        Destination folder for the downloaded file
+    src : list
+        List of URLs to use as mirrors
     &quot;&quot;&quot;
 
-    file_size = int(requests.head(url).headers[&quot;Content-Length&quot;])
-    if os.path.exists(dst):
-        first_byte = os.path.getsize(dst)
-    else:
-        first_byte = 0
-    if first_byte &gt;= file_size:
-        return file_size
-    header = {f&quot;Range&quot;: &quot;bytes={first_byte}-{file_size}&quot;}
-    pbar = tqdm(
-        total=file_size,
-        initial=first_byte,
-        unit=&quot;B&quot;,
-        unit_scale=True,
-        desc=url.split(&quot;/&quot;)[-1],
-    )
-    req = requests.get(url, headers=header, stream=True)
-    with open(dst, &quot;ab&quot;) as f:
-        for chunk in req.iter_content(chunk_size=1024):
-            if chunk:
-                f.write(chunk)
-                pbar.update(1024)
-    pbar.close()
-    return file_size</div>
+    cached_file_path = download_file(url, sources=src, pkgname=&quot;tardis&quot;)
+    shutil.copy(cached_file_path, dst)</div>
 </pre></div>
 
            </div>
@@ -542,7 +527,7 @@ YAMLLoader.add_constructor(
 
   <div role="contentinfo">
     <p>&#169; Copyright 2013-2022, TARDIS Collaboration.
-      <span class="lastupdated">Last updated on 10 May 2022.
+      <span class="lastupdated">Last updated on 11 May 2022.
       </span></p>
   </div>
 

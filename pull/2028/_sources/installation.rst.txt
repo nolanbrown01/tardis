@@ -5,28 +5,29 @@ Installation
 ************
 
 
-.. note::
+.. warning::
     
     - TARDIS is only supported on macOS and GNU/Linux. Windows users can run TARDIS 
       from our official Docker image (*coming soon*), `WSL <https://docs.microsoft.com/en-us/windows/wsl/>`_ 
       or a Virtual Machine.
 
     - TARDIS packages and dependencies are distributed only through the `conda <https://docs.conda.io/en/latest/>`_ 
-      package management system, and consequently requires a valid `Anaconda <https://docs.anaconda.com/anaconda/install/index.html>`_ 
-      or `Miniconda <https://conda.io/projects/conda/en/latest/user-guide/install/index.html>`_ installation
-      to work.
+      package management system, therefore requires having `Anaconda <https://docs.anaconda.com/anaconda/install/index.html>`_ 
+      or `Miniconda <https://conda.io/projects/conda/en/latest/user-guide/install/index.html>`_
+      installed on your system.
 
 
 Development version
 ===================
 
-We encourage users to use the latest TARDIS development version by reproducing the following steps.
+We encourage users to use the latest TARDIS development version by reproducing the following steps:
 
-1. Download the dependency file specific for your platform (`linux` or `osx`).
+1. Download the latest dependency file for your platform (`linux` or `osx`) from our 
+   `releases page <https://github.com/tardis-sn/tardis/releases>`_.
 
   ::
 
-    $ curl -s https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
+    $ wget -q https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
 
 2. Create and activate the `tardis` environment.
 
@@ -76,7 +77,7 @@ To update an existing environment, download the latest environment file and run 
 
 ::
 
-    $ curl -s https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
+    $ wget -q https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
     $ conda update -n tardis --file conda-{platform}-64.lock
 
 

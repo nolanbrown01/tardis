@@ -144,26 +144,27 @@
 </style>
 <section id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <ul class="simple">
 <li><p>TARDIS is only supported on macOS and GNU/Linux. Windows users can run TARDIS
 from our official Docker image (<em>coming soon</em>), <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/">WSL</a>
 or a Virtual Machine.</p></li>
 <li><p>TARDIS packages and dependencies are distributed only through the <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>
-package management system, and consequently requires a valid <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">Anaconda</a>
-or <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html">Miniconda</a> installation
-to work.</p></li>
+package management system, therefore requires having <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">Anaconda</a>
+or <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html">Miniconda</a>
+installed on your system.</p></li>
 </ul>
 </div>
 <section id="development-version">
 <h2>Development version<a class="headerlink" href="#development-version" title="Permalink to this headline">¶</a></h2>
-<p>We encourage users to use the latest TARDIS development version by reproducing the following steps.</p>
+<p>We encourage users to use the latest TARDIS development version by reproducing the following steps:</p>
 <ol class="arabic simple">
-<li><p>Download the dependency file specific for your platform (<code class="xref py py-obj docutils literal notranslate"><span class="pre">linux</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">osx</span></code>).</p></li>
+<li><p>Download the latest dependency file for your platform (<code class="xref py py-obj docutils literal notranslate"><span class="pre">linux</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">osx</span></code>) from our
+<a class="reference external" href="https://github.com/tardis-sn/tardis/releases">releases page</a>.</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ curl -s https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ wget -q https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
 </pre></div>
 </div>
 </div></blockquote>
@@ -213,7 +214,7 @@ TARDIS package.</p>
 <section id="update-an-existing-environment">
 <h3>Update an existing environment<a class="headerlink" href="#update-an-existing-environment" title="Permalink to this headline">¶</a></h3>
 <p>To update an existing environment, download the latest environment file and run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ curl -s https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ wget -q https://github.com/tardis-sn/tardis/releases/latest/download/conda-{platform}-64.lock
 $ conda update -n tardis --file conda-{platform}-64.lock
 </pre></div>
 </div>
